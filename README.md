@@ -4,7 +4,7 @@ This is code used while I was doing the Udemy Test Drive Development with PHP Un
 
 ## Getting Started
 
-Step 1.  TBD
+Step 1.  Install PHPUnit
 
 ## Using the code
 
