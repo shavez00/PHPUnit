@@ -1,7 +1,7 @@
 <?php
 
 use PHPUnit\Framework\TestCase;
-require __DIR__ . "/../Octagon.php";
+require __DIR__ . "/../src/Octagon.php";
 
 class OctagonCalculatorTest extends TestCase {
     private $testParameter = ["side"=>10,"perimeter"=>80,"area"=>482.842712];
