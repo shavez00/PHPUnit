@@ -1,6 +1,6 @@
-# Udemy Test Driven Development with PHP Unit 
+# Test Driven Development with PHP Unit 
 
-This is code used while I was doing the Udemy Test Drive Development with PHP Unit course
+This is code used while I was doing the Udemy and LinkedIn Test Drive Development with PHP Unit courses
 
 ## Getting Started
 
