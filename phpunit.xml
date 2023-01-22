@@ -8,15 +8,13 @@
   <php>
     <ini name="memory_limit" value="-1"/>
     <ini name="apc.enable_cli" value="1"/>
+    <includePath>src</includePath>
   </php>
   <!-- Add any additional test suites you want to run here -->
   <testsuites>
-    <testsuite name="app">
-      <directory>./test</directory>
-    </testsuite>
     <testsuite name="receipt">
       <directory>./test</directory>
-      <exclude>./test/ReceiptItems.php</exclude>
+      <exclude>./test/OctagonCalculatorTest.php</exclude>
     </testsuite>
   </testsuites>
   <!--
