@@ -1,4 +1,5 @@
 <?php
+namespace Octagon;
 
 class Octagon {
     private $sideLength = null;

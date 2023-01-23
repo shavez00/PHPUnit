@@ -1,8 +1,4 @@
 <?php
-namespace TDD\Test;
-
-require dirname(dirname(__FILE__)).DIRECTORY_SEPARATOR.'vendor'.DIRECTORY_SEPARATOR.'autoload.php';
-
 use PHPUnit\Framework\TestCase;
 use TDD\Receipt;
 
@@ -15,14 +11,24 @@ class ReceiptTest extends TestCase {
         unset($this->Receipt);
     }
 
-    public function testTotal() {
-        $input = [0,2,5,8];
-        $output = $this->Receipt->total($input);
+    /**
+     * @dataProvider provideTotal
+     */
+    public function testTotal($items, $expected) {
+        $output = $this->Receipt->total($items);
         $this->assertEquals(
-            15,
+            $expected,
             $output,
-            'When summing the total should equal 15'
+            "When summing the total should equal {$expected}"
         );
+    }
+
+    public function provideTotal() {
+        return [
+            'integers' => [[1,2,5,8], 16],
+            'negative' => [[-1,2,5,8], 14],
+            'float' => [[5,8,25,12.5], 50.5]
+        ];
     }
 
     public function testTotalAndCoupon() {
@@ -55,12 +61,19 @@ class ReceiptTest extends TestCase {
     }
 
     public function testPostTaxTotal() {
+        $items=[1,2,5,8];
+        $tax=0.20;
+        $coupon=null;
         $Receipt = $this->getMockBuilder('TDD\Receipt')
             ->setMethods(['tax','total'])
             ->getMock();
-        $Receipt->method('total')
+        $Receipt->expects($this->once())
+            ->method('total')
+            ->with($items, $coupon)
             ->will($this->returnValue(10.0));
-        $Receipt->method('tax')
+        $Receipt->expects($this->once())
+            ->method('tax')
+            ->with(10.0, $tax)
             ->will($this->returnValue(1));
         $result = $Receipt->postTaxTotal([1,2,5,8],0.20,null);
         $this->assertEquals(

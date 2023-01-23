@@ -1,7 +1,6 @@
 <?php
-
 use PHPUnit\Framework\TestCase;
-require __DIR__ . "/../src/Octagon.php";
+use Octagon\Octagon;
 
 class OctagonCalculatorTest extends TestCase {
     public function setUp() : void {
@@ -17,7 +16,7 @@ class OctagonCalculatorTest extends TestCase {
     public function testInitiateClass()
     {
         $this->assertTrue(true);
-        $this->assertInstanceOf("Octagon", $this->Octagon);
+        $this->assertInstanceOf("Octagon\Octagon", $this->Octagon);
     }
 
     public function testCalculatePerimeterWithSideLength10() {

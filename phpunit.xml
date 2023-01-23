@@ -1,17 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" colors="true" processIsolation="false" stopOnFailure="false" xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.3/phpunit.xsd">
-  <coverage processUncoveredFiles="true">
-    <include>
-      <directory suffix=".php">./src</directory>
-    </include>
-  </coverage>
   <php>
     <ini name="memory_limit" value="-1"/>
     <ini name="apc.enable_cli" value="1"/>
-    <includePath>src</includePath>
   </php>
   <!-- Add any additional test suites you want to run here -->
   <testsuites>
+    <!--- <testsuite name="octagon">
+      <directory>./test</directory>
+      <exclude>./test/REceiptTest.php</exclude>
+    </testsuite>-->
     <testsuite name="receipt">
       <directory>./test</directory>
       <exclude>./test/OctagonCalculatorTest.php</exclude>
