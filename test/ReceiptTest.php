@@ -12,18 +12,18 @@ class ReceiptTest extends TestCase {
     }
 
     /**
-     * @dataProvider provideTotal
+     * @dataProvider provideSubtotal
      */
-    public function testTotal($items, $expected) {
-        $output = $this->Receipt->total($items);
+    public function testSubtotal($items, $expected) {
+        $output = $this->Receipt->subtotal($items);
         $this->assertEquals(
             $expected,
             $output,
-            "When summing the total should equal {$expected}"
+            "When summing the Subtotal should equal {$expected}"
         );
     }
 
-    public function provideTotal() {
+    public function provideSubtotal() {
         return [
             'integers' => [[1,2,5,8], 16],
             'negative' => [[-1,2,5,8], 14],
@@ -31,22 +31,22 @@ class ReceiptTest extends TestCase {
         ];
     }
 
-    public function testTotalAndCoupon() {
+    public function testSubtotalAndCoupon() {
         $input = [0,2,5,8];
         $coupon = 0.2;
-        $output = $this->Receipt->total($input, $coupon);
+        $output = $this->Receipt->subtotal($input, $coupon);
         $this->assertEquals(
             12,
             $output,
-            'When summing the total should equal 12'
+            'When summing the subtotal should equal 12'
         );
     }
 
-    public function testTotalAndCouponException() {
+    public function testSubtotalAndCouponException() {
         $this->expectException(\Exception::class);
         $input = [0,2,5,8];
         $coupon = '20';
-        $output = $this->Receipt->total($input, $coupon);
+        $output = $this->Receipt->subtotal($input, $coupon);
     }
 
     public function testTax() {

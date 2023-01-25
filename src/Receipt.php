@@ -2,7 +2,7 @@
 namespace TDD;
 
 class Receipt {
-    public function total(array $items = [], $coupon = null){
+    public function subtotal(array $items = [], $coupon = null){
         if(!is_null($coupon)) {
             if(is_string($coupon) & str_contains($coupon,'%')) {
                 $coupon = str_replace('%','',$coupon);
